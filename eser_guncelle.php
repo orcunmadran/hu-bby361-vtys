@@ -106,7 +106,7 @@
     <h1 class="mt-5">Eser Güncelle</h1>
         <p class="lead">Bu sayfada aşağıda yer alan formu kullanarak eseri güncelleyebilirsiniz!</p>
     <h2>Eser Güncelleme Formu</h2>
-        <form method="post" action="guncelle2.php">
+        <form method="post" action="eser_guncelle2.php">
             <div class="mb-3">
                 <label for="formControl1" class="form-label">Eser Adı</label>
                 <input type="text" class="form-control" id="formControl1" name="eserAdi" value="<?php echo $satir["eserAdi"];?>">
@@ -119,6 +119,7 @@
                 <label for="formControl1" class="form-label">Eser URL</label>
                 <input type="text" class="form-control" id="formControl3" name="eserURL" value="<?php echo $satir["eserURL"];?>">
             </div>
+            <input type="hidden" value="<?php echo $satir["eserID"] ;?>" name="eserID">
             <button type="submit" class="btn btn-primary">Eser güncelle!</button>
         </form>
   </div>

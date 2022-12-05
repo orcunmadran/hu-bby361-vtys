@@ -112,7 +112,7 @@
       <p>
           <?php
           while($satir = mysqli_fetch_assoc($sorgu)){
-              printf("<p>".$satir['eserID']." - ".$satir['eserAdi']." (<a href='guncelle.php?eserID=".$satir['eserID']."'>Güncelle</a>) "." (<a href='sil.php?eserID=".$satir['eserID']."'>Sil</a>) ");
+              printf("<p>".$satir['eserID']." - ".$satir['eserAdi']." (<a href='eser_guncelle.php?eserID=".$satir['eserID']."'>Güncelle</a>) "." (<a href='eser_sil.php?eserID=".$satir['eserID']."'>Sil</a>) ");
           }
           ?>
       </p>
