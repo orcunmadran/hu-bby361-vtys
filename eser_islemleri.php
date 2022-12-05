@@ -3,8 +3,8 @@
     require_once("baglanti.php");
 
     /* Veritabanı sorgulama */
-    $sonuc = mysqli_query($baglanti, "SELECT * FROM eserler");
-    $toplam = mysqli_num_rows($sonuc);
+    $sorgu = mysqli_query($baglanti, "SELECT * FROM eserler");
+    $toplam = mysqli_num_rows($sorgu);
 ?>
 
 <!doctype html>
@@ -111,7 +111,7 @@
       <p><?php echo("Toplam kayıt sayısı: ".$toplam);?></p>
       <p>
           <?php
-          while($satir = mysqli_fetch_assoc($sonuc)){
+          while($satir = mysqli_fetch_assoc($sorgu)){
               printf("<p>".$satir['eserID']." - ".$satir['eserAdi']." (<a href='guncelle.php?eserID=".$satir['eserID']."'>Güncelle</a>) "." (<a href='sil.php?eserID=".$satir['eserID']."'>Sil</a>) ");
           }
           ?>

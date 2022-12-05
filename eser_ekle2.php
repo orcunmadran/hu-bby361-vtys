@@ -6,17 +6,16 @@ require_once("baglanti.php");
 $eserAdi = mysqli_real_escape_string($baglanti, $_POST['eserAdi']);
 $eserDetay = mysqli_real_escape_string($baglanti, $_POST['eserDetay']);
 $eserURL = mysqli_real_escape_string($baglanti, $_POST['eserURL']);
-$sorgu = "INSERT INTO yazar (eserAdi, eserDetay, eserURL)
-            VALUES ('$eserAdi', '$eserAdi', '$eserURL')";
+$sorgu = "INSERT INTO eserler (eserAdi, eserDetay, eserURL)
+            VALUES ('$eserAdi', '$eserDetay', '$eserURL')";
 
 if (mysqli_query($baglanti, $sorgu)) {
-    $islemSonuc = "Yeni kayıt Başarıyla Oluşturuldu.";
+    mysqli_close($baglanti);
+    if (!headers_sent()) {
+        header("Location: eserleri_listele.php");
+        exit;
+    }
 } else {
     $islemSonuc = "Hata: " . $sorgu . "<br>" . mysqli_error($baglanti);
 }
-
-$sorgu2 = mysqli_query($baglanti, "SELECT * FROM eserler ORDER BY eserID DESC");
-
-mysqli_close($baglanti);
-
 ?>

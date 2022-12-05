@@ -1,3 +1,12 @@
+<?php
+    /* Bağlantı bilgileri */
+    require_once("baglanti.php");
+
+    /* Veritabanı sorgulama */
+    $guncellenecek = mysqli_real_escape_string($baglanti, $_GET["eserID"]);
+    $sorgu = mysqli_query($baglanti,"SELECT * FROM eserler WHERE eserID = $guncellenecek");
+    $satir = mysqli_fetch_assoc($sorgu);
+?>
 <!doctype html>
 <html lang="en" class="h-100">
   <head>
@@ -94,23 +103,23 @@
 <!-- Sayfa İçerik Başlangıcı -->
 <main class="flex-shrink-0">
   <div class="container">
-    <h1 class="mt-5">Yeni Eser Ekle</h1>
-        <p class="lead">Bu sayfada aşağıda yer alan formu kullanarak veritabanına yeni bir eser ekleyebilirsiniz!</p>
-    <h2>Eser Ekleme Formu</h2>
-        <form method="post" action="eser_ekle2.php">
+    <h1 class="mt-5">Eser Güncelle</h1>
+        <p class="lead">Bu sayfada aşağıda yer alan formu kullanarak eseri güncelleyebilirsiniz!</p>
+    <h2>Eser Güncelleme Formu</h2>
+        <form method="post" action="guncelle2.php">
             <div class="mb-3">
                 <label for="formControl1" class="form-label">Eser Adı</label>
-                <input type="text" class="form-control" id="formControl1" name="eserAdi">
+                <input type="text" class="form-control" id="formControl1" name="eserAdi" value="<?php echo $satir["eserAdi"];?>">
             </div>
             <div class="mb-3">
                 <label for="formControl2" class="form-label">Eser Özeti</label>
-                <textarea class="form-control" id="formControl2" rows="3" name="eserDetay"></textarea>
+                <textarea class="form-control" id="formControl2" rows="3" name="eserDetay"><?php echo $satir["eserDetay"];?></textarea>
             </div>
             <div class="mb-3">
                 <label for="formControl1" class="form-label">Eser URL</label>
-                <input type="text" class="form-control" id="formControl3" name="eserURL">
+                <input type="text" class="form-control" id="formControl3" name="eserURL" value="<?php echo $satir["eserURL"];?>">
             </div>
-            <button type="submit" class="btn btn-primary">Eser ekle!</button>
+            <button type="submit" class="btn btn-primary">Eser güncelle!</button>
         </form>
   </div>
 </main>
