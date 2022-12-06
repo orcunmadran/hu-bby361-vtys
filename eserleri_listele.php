@@ -3,7 +3,7 @@
     require_once("baglanti.php");
 
     /* Veritabanı sorgulama */
-    $sorgu = mysqli_query($baglanti, "SELECT * FROM eserler");
+    $sorgu = mysqli_query($baglanti, "SELECT ES.*, CONCAT(YA.yazarAdi, ' ', YA.yazarSoyadi) AS yazarAdSoyad FROM eserler ES, yazarlar YA WHERE ES.yazarID = YA.yazarID");
     $toplam = mysqli_num_rows($sorgu);
 ?>
 
@@ -115,6 +115,7 @@
               printf("<b>Eser kayıt tarihi:</b> ".$satir["eserDamga"]."</br>");
               printf("<b>Eser özeti:</b> ".$satir["eserDetay"]."</br>");
               printf("<b>Eser URL:</b> <a target='_blank' href=".$satir["eserURL"].">".$satir["eserURL"]."</a></br>");
+              printf("<b>Yazar:</b> ".$satir["yazarAdSoyad"]."</br>");
               printf("<hr>");
           }
           ?>

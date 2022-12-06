@@ -1,3 +1,10 @@
+<?php
+/* Bağlantı bilgileri */
+require_once("baglanti.php");
+
+/* Veritabanı sorgulama */
+$sorgu = mysqli_query($baglanti, "SELECT yazarID, CONCAT(yazarAdi, ' ',yazarSoyadi) AS adSoyad FROM yazarlar");
+?>
 <!doctype html>
 <html lang="en" class="h-100">
   <head>
@@ -109,6 +116,15 @@
             <div class="mb-3">
                 <label for="formControl1" class="form-label">Eser URL</label>
                 <input type="text" class="form-control" id="formControl3" name="eserURL">
+            </div>
+            <div class="mb-3">
+                <label for="formControl1" class="form-label">Yazar</label>
+                <select class="form-control" id="formControl4" name="yazarID">
+                    <option selected disabled value="">Seçiniz...</option>
+                <?php while($satir = mysqli_fetch_assoc($sorgu)){?>
+                    <option value="<?php echo $satir["yazarID"]?>"><?php echo $satir["adSoyad"]?></option>
+                 <?php }?>
+                </select>
             </div>
             <button type="submit" class="btn btn-primary">Eser ekle!</button>
         </form>
