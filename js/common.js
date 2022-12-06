@@ -9,8 +9,8 @@ mainMenu = [
 
 //Arama Formu
 searchForm =
-'<form class="d-flex" role="search">'+
-   '<input class="form-control me-2" type="search" placeholder="Aranacak..." aria-label="Search">'+
+'<form class="d-flex" role="search" method="get" action="arama.php">'+
+   '<input class="form-control me-2" type="search" placeholder="Aranacak..." aria-label="Search" name="q">'+
    '<button class="btn btn-outline-success" type="submit">Ara</button>'+
 '</form>';
 
