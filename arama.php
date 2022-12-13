@@ -4,7 +4,7 @@
 
     /* Veritabanı sorgulama */
     $q = mysqli_real_escape_string($baglanti, $_GET["q"]);
-    $sorgu = mysqli_query($baglanti, "SELECT * FROM eserler WHERE eserDetay LIKE('%$q%') OR eserAdi LIKE('%$q%') OR eserURL LIKE('%$q%')");
+    $sorgu = mysqli_query($baglanti, "SELECT * FROM eserler, yazarlar WHERE eserler.yazarID = yazarlar.yazarID AND yazarAdi LIKE('%$q%') OR yazarSoyadi LIKE('%$q%') OR eserDetay LIKE('%$q%') OR eserAdi LIKE('%$q%') OR eserURL LIKE('%$q%')");
     $toplam = mysqli_num_rows($sorgu);
 ?>
 
